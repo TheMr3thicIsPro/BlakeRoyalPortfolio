@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #e5e7eb;
+  --accent-navy: #0f172a;
+  --highlight-blue: #2563eb;
+  --hover-glow: rgba(37, 99, 235, 0.35);
+  --max-width: 1200px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent-navy);
+  --color-highlight: var(--highlight-blue);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto,
+    Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 0;
+  background: var(--highlight-blue);
+  box-shadow: 0 0 12px var(--hover-glow);
+  z-index: 50;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--highlight-blue);
+  box-shadow: 0 0 24px var(--hover-glow);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  opacity: 0.75;
+}
+
+/* scroll snapping removed to prevent auto jump on load */
+
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    /* no snapping under reduced motion */
+  }
+  .cursor-glow {
+    display: none;
+  }
+}
+
+@keyframes caretBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.caret {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  margin-left: 6px;
+  background: var(--highlight-blue);
+  box-shadow: 0 0 12px var(--hover-glow);
+  animation: caretBlink 1s infinite;
+  vertical-align: text-bottom;
+}
+@keyframes shimmer {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.animate-shimmer {
+  animation: shimmer 4s infinite;
+}
+
+.code-gradient {
+  background-image: linear-gradient(90deg, #f59e0b, #fde68a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tok-keyword { color: #569cd6; }
+.tok-string { color: #6a9955; }
+.tok-comment { color: #7f7f7f; }
+.tok-number { color: #c586c0; }
+.tok-var { color: #d19a66; }
+
+.text-shadow-strong {
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.18),
+    0 0 24px rgba(37, 99, 235, 0.25);
+}
+
+.text-3d {
+  transform-style: preserve-3d;
+  text-shadow:
+    0 0 0 #ffffff,
+    0 1px 0 #f0f0f0,
+    0 2px 0 #e0e0e0,
+    0 3px 0 #d0d0d0,
+    0 4px 0 #c0c0c0,
+    0 5px 0 #b0b0b0,
+    0 6px 0 #a0a0a0,
+    0 7px 0 #909090,
+    0 8px 0 #808080,
+    0 9px 0 #707070,
+    0 10px 0 #606060,
+    0 11px 0 #505050,
+    0 12px 0 #404040,
+    0 13px 0 #303030,
+    0 14px 0 #202020,
+    0 15px 0 #101010,
+    0 16px 16px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(37, 99, 235, 0.25);
+}
